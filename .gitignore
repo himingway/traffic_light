@@ -41,3 +41,37 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.cd
+*.bak
+*.qpf
+*.qpg
+*.qsf
+*.kpt
+*.qmsg
+*.rdb
+*.hsd
+*.db_info
+*.xml
+*.qdb
+*.vwf
+*.xrf
+*.sdo
+*.vo
+*.hdb
+*.idb
+*.html
+*.dfp
+*.hier_info
+*.bpm
+*.rpt
+*.jdi
+*.txt
+*.logdb
+*.dat
+*.hif
+*.ammdb
+*.cdb
+incremental_db/*.*
+db/*.*
+output_files/*.*
+simulation/*.*
