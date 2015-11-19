@@ -68,7 +68,7 @@ always @(posedge clk or negedge rst_n) begin : proc_light_control
 					end
 			end
 			2'd2:begin 
-				if(cnt == Tx)  rseg_signal <= 0;
+				if(cnt == Tx * 10)  rseg_signal <= 0;
 				if(cnt == (Tx+Ty)*10-51) begin 
 					state <= 3'd3;
 					rGy <= 1'b0;
