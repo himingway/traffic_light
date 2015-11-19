@@ -75,3 +75,9 @@ incremental_db/*.*
 db/*.*
 output_files/*.*
 simulation/*.*
+*.rcfdb
+*.dpi
+*.hb_info
+*.sig
+*.sft
+incremental_db/README
