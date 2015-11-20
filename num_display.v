@@ -1,4 +1,4 @@
-module exp07_top
+module num_display
 (
 	CLK,RSTn,Number_Data,Row_Scan_Sig,Column_Scan_Sig
 ); 

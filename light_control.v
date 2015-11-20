@@ -12,10 +12,9 @@ reg rRy;
 reg [1:0] state;
 reg [20:0] cnt;
 reg rseg_signal;
+
 parameter Tx =30;
 parameter Ty = 15;
-
-parameter IDLE = 3'd0;
 
 always @(posedge clk or negedge rst_n) begin : proc_cnt
 	if(~rst_n) begin
