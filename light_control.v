@@ -9,7 +9,7 @@ reg rGy;
 reg rRx;
 reg rRy;
 reg [1:0] state;
-reg [20:0] cnt;
+reg [23:0] cnt;
 
 parameter Tx =30;
 parameter Ty = 15;
@@ -19,7 +19,7 @@ always @(posedge clk or negedge rst_n) begin : proc_cnt
 		cnt <= 0;
 	end else begin
 		if (cnt == (Tx+Ty)*10-1)
-			cnt <= 20'd0;
+			cnt <= 0;
 		else
 			cnt <= 1'd1+cnt;
 	end
@@ -35,9 +35,8 @@ always @(posedge clk or negedge rst_n) begin : proc_light_control
 	end else begin
 		case (state)
 			2'd0:begin 
-				if(cnt == 0)
 				if(cnt == Tx * 10 - 51) begin
-					state <= 3'd1;
+					state <= 2'd1;
 					rGx <= 1'b0;
 				end
 				else
@@ -48,7 +47,7 @@ always @(posedge clk or negedge rst_n) begin : proc_light_control
 			end
 			2'd1:begin 
 				if(cnt == Tx*10 -1) begin
-					state <= 3'd2;
+					state <= 2'd2;
 					rGx <= 1'b0;
 				end
 				else if(cnt == Tx*10 - 6) begin 
@@ -75,16 +74,13 @@ always @(posedge clk or negedge rst_n) begin : proc_light_control
 				else if(cnt == Tx*10 - 41) begin 
 					rGx <= 1'b0;
 					end
-				else if(cnt == Tx*10 - 46) begin 
+				else if(cnt == Tx*10- 46) begin 
 					rGx <= 1'b1;
-					end
-				else if(cnt == Tx*10 - 51) begin 
-					rGx <= 1'b0;
 					end
 			end
 			2'd2:begin 
 				if(cnt == (Tx+Ty)*10-51) begin 
-					state <= 3'd3;
+					state <= 2'd3;
 					rGy <= 1'b0;
 				end
 				else begin
@@ -96,6 +92,7 @@ always @(posedge clk or negedge rst_n) begin : proc_light_control
 			2'd3:begin 
 				if(cnt == (Tx+Ty)*10-1) begin
 					rGy <= 1'b0;
+					state <= 2'd0;
 				end
 				else if(cnt == (Tx+Ty)*10-6) begin 
 					rGy <= 1'b1;
@@ -124,9 +121,6 @@ always @(posedge clk or negedge rst_n) begin : proc_light_control
 				else if(cnt == (Tx+Ty)*10-46) begin 
 					rGy <= 1'b1;
 					end
-				else if(cnt == (Tx+Ty)*10-51) begin 
-					rGy <= 1'b0;
-					end				
 			end
 			default : state <= 2'd0;
 		endcase

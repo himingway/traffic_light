@@ -9,7 +9,7 @@ parameter Tx =30;
 parameter Ty = 15;
 
 reg [7:0] rNumout = Tx-1;
-reg [5:0]cnt1;
+reg [8:0]cnt1;
 reg clk1;
 reg state;
 reg flag;
@@ -21,7 +21,7 @@ always @(posedge clk or negedge rst_n) begin : proc_Numour
 		state <= 1'b0;
 	end else begin
 		if(flag ==0) begin
-			if(cnt1 == 49) begin
+			if(cnt1 == 9) begin
 				cnt1 <=0;
 				rNumout <=rNumout -1'b1;
 			end
@@ -32,7 +32,7 @@ always @(posedge clk or negedge rst_n) begin : proc_Numour
 			end
 		end
 		else if (flag==1) begin 
-			if(cnt1 == 49) begin
+			if(cnt1 == 9) begin
 				cnt1 <=0;
 				rNumout <=rNumout -1'b1;
 			end
