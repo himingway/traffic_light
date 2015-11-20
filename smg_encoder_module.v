@@ -31,6 +31,7 @@ module smg_encoder_module
 			end
 		else
 			case(Ten_Data)
+				4'd0:rTen_SMG_Data<=_0;
 				4'd1:rTen_SMG_Data<=_1;
 				4'd2:rTen_SMG_Data<=_2;
 				4'd3:rTen_SMG_Data<=_3;
@@ -51,6 +52,7 @@ module smg_encoder_module
 				end
 			else
 				case(One_Data)
+				4'd0:rOne_SMG_Data<=_0;
 				4'd1:rOne_SMG_Data<=_1;
 				4'd2:rOne_SMG_Data<=_2;
 				4'd3:rOne_SMG_Data<=_3;
