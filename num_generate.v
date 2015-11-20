@@ -21,26 +21,26 @@ always @(posedge clk or negedge rst_n) begin : proc_Numour
 	end else begin
 		case (state)
 			1'b0: begin
-			if(cnt1 == 49)begin 
-				cnt1 <= 0;
-				rNumout <= rNumout -1'b1;
-			end else 
-			cnt1 <= 1'b1+cnt1;
-			if(rNumout == 8'b11111111) begin
-				state <= 1'b1; 
-				rNumout <= Ty-1;
-			end
+				if(cnt1 == 49)begin 
+					cnt1 <= 0;
+					rNumout <= rNumout -1'b1;
+				end else 
+				cnt1 <= 1'b1+cnt1;
+				if(rNumout == 8'b11111111) begin
+					state <= 1'b1; 
+					rNumout <= Ty-1;
+				end
 			end
 			1'b1: begin
-			if(cnt1 == 49)begin 
-				cnt1 <= 0;
-				rNumout <= rNumout - 1'b1;
-			end else 
-			cnt1 <= 1'b1+cnt1;
-			if(rNumout == 8'b11111111) begin 
-				state <= 1'b0;
-				rNumout <= Tx-1;
-			end
+				if(cnt1 == 49)begin 
+					cnt1 <= 0;
+					rNumout <= rNumout - 1'b1;
+				end else 
+				cnt1 <= 1'b1+cnt1;
+				if(rNumout == 8'b11111111) begin 
+					state <= 1'b0;
+					rNumout <= Tx-1;
+				end
 			end
 			default : state <= 1'b0;
 		endcase
