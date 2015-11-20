@@ -47,4 +47,5 @@ always @(posedge clk or negedge rst_n) begin : proc_Numour
 	end
 end
 assign Numout = rNumout;
+
 endmodule
