@@ -9,7 +9,7 @@ parameter Tx =30;
 parameter Ty = 15;
 
 reg [20:0]cnt;
-reg [7:0] rNumout＝Tx;
+reg [7:0] rNumout;
 reg [5:0]cnt1;
 reg clk1;
 reg state;
@@ -28,7 +28,7 @@ end
 
 always @(posedge clk or negedge rst_n) begin : proc_Numour
 	if(~rst_n) begin
-		rNumout <= Tx-1;
+		rNumout <= 0;
 		cnt1 <=0;
 		state <= 1'b0;
 	end else begin
@@ -36,23 +36,23 @@ always @(posedge clk or negedge rst_n) begin : proc_Numour
 			1'b0: begin
 			if(cnt1 == 49)begin 
 				cnt1 <= 0;
-				rNumout <= rNumout - 1'b1;
+				rNumout <= rNumout + 1'b1;
 			end else 
 			cnt1 <= 1'b1+cnt1;
-			if(rNumout ==0) begin
+			if(rNumout == Tx-1) begin
 				state <= 1'b1; 
-				rNumout <= Ty-1;
+				rNumout <= 0;
 			end
 			end
 			1'b1: begin
 			if(cnt1 == 49)begin 
 				cnt1 <= 0;
-				rNumout <= rNumout - 1'b1;
+				rNumout <= rNumout ＋ 1'b1;
 			end else 
 			cnt1 <= 1'b1+cnt1;
-			if(rNumout ==0) begin 
+			if(rNumout == Ty-1) begin 
 				state <= 1'b0;
-				rNumout <= Tx-1;
+				rNumout <= 0;
 			end
 			end
 			default : state <= 1'b0;
@@ -60,5 +60,4 @@ always @(posedge clk or negedge rst_n) begin : proc_Numour
 	end
 end
 assign Numout = rNumout;
-assign test=select;
 endmodule
