@@ -5,13 +5,14 @@ module seg (
 	output test
 	);
 
+parameter Tx =30;
+parameter Ty = 15;
+
 reg [20:0]cnt;
-reg [7:0] rNumout;
+reg [7:0] rNumout＝Tx;
 reg [5:0]cnt1;
 reg clk1;
 reg state;
-parameter Tx =30;
-parameter Ty = 15;
 
 always @(posedge clk or negedge rst_n) begin : proc_cnt
 	if(~rst_n) begin
