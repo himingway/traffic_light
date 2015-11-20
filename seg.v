@@ -51,7 +51,7 @@ always @(posedge clk or negedge rst_n) begin : proc_Numour
 			cnt1 <= 1'b1+cnt1;
 			if(rNumout ==0) begin 
 				state <= 1'b0;
-				rNumout <= Tx;
+				rNumout <= Tx-1;
 			end
 			end
 			default : state <= 1'b0;
