@@ -11,14 +11,12 @@ parameter Ty = 15;
 reg [7:0] rNumout = Tx-1;
 reg [8:0]cnt1;
 reg clk1;
-reg state;
 reg flag;
 
 always @(posedge clk or negedge rst_n) begin : proc_Numour
 	if(~rst_n) begin
 		rNumout <= Tx-1;
 		cnt1 <=0;
-		state <= 1'b0;
 	end else begin
 		if(flag ==0) begin
 			if(cnt1 == 9) begin
