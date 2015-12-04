@@ -3,6 +3,7 @@ module traffic_light (
 	input rst_n,  // Asynchronous reset active low
 	output [7:0]Row_Scan_Sig,
 	output[1:0]Column_Scan_Sig,
+	output[1:0]Column_Scan_Sig2,
 	output [3:0]ledout
 );
 
@@ -43,4 +44,12 @@ num_display U4
 	.Row_Scan_Sig(Row_Scan_Sig),
 	.Column_Scan_Sig(Column_Scan_Sig)
 	);
+	
+num_display U5
+(
+	.CLK(clk),
+	.RSTn(rst_n),
+	.Column_Scan_Sig(Column_Scan_Sig2)
+	);
+	
 endmodule
